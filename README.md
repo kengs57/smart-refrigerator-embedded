@@ -1,5 +1,3 @@
----
-
 ```markdown
 # 🧊 IoT Smart Refrigerator (Hardware & Embedded Control System)
 
@@ -143,7 +141,3 @@ const char* mqtt_server = "YOUR_MQTT_BROKER_IP";
 
 ```
 
----
-
-
-```
