@@ -54,7 +54,7 @@
                                            │ GPIO Output                          │
                                            ▼                                      ▼
                                     ┌──────────────┐                   ┌──────────────────────┐
-                                    │ 4채널 릴레이   │                   │  Node-RED Dashboard  │
+                                    │ 4채널 릴레이  │                   │  Node-RED Dashboard  │
                                     │ (멀티탭 전원) │                   │  (클라우드 VM 관제)   │
                                     └──────────────┘                   └──────────────────────┘
 
@@ -139,5 +139,4 @@ const char* mqtt_server = "YOUR_MQTT_BROKER_IP";
 * `esp8266_gateway/gateway/gateway.ino` ➔ **LOLIN(WEMOS) D1 R1**
 * `esp32_cam/CameraWebServer/CameraWebServer.ino` ➔ **AI Thinker ESP32-CAM** (PSRAM 활성화)
 
-```
 
