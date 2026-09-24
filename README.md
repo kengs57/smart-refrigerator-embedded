@@ -1,4 +1,4 @@
-```markdown
+
 # 🧊 IoT Smart Refrigerator (Hardware & Embedded Control System)
 
 > **인공지능 비전 센서(HuskyLens) 기반 식료품 자동 인식, 멀티 앵글 ESP32-CAM 실시간 모니터링 및 MQTT 원격 제어를 구현한 스마트 냉장고 임베디드 시스템**
