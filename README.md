@@ -1,7 +1,17 @@
-
 # 🧊 IoT Smart Refrigerator (Hardware & Embedded Control System)
 
 > **인공지능 비전 센서(HuskyLens) 기반 식료품 자동 인식, 멀티 앵글 ESP32-CAM 실시간 모니터링 및 MQTT 원격 제어를 구현한 스마트 냉장고 임베디드 시스템**
+
+[![YouTube Demo](https://img.shields.io/badge/YouTube-시연_영상_보러가기-red?logo=youtube)](https://youtu.be/gLbvXi6EgAk)
+
+---
+
+## 📺 시연 영상 (Demo Video)
+
+냉장고 내부 LED 제어, 다채널 ESP32-CAM 영상 스트리밍 및 HuskyLens 식료품 인식 모니터링 동작 영상입니다.
+
+[![Smart Refrigerator Demo](https://img.youtube.com/vi/gLbvXi6EgAk/0.jpg)](https://youtu.be/gLbvXi6EgAk)  
+*(이미지를 클릭하면 유튜브 영상으로 이동합니다: https://youtu.be/gLbvXi6EgAk)*
 
 ---
 
@@ -10,6 +20,21 @@
 냉장고 문을 열지 않고도 내부 식료품의 적재 현황과 온습도 상태를 실시간으로 모니터링하고, 내부 조명 및 보조 기기를 원격 제어할 수 있는 스마트 냉장고 프로토타입입니다.
 
 본 저장소는 시스템의 핵심 축인 **임베디드 펌웨어(Arduino, ESP8266, ESP32-CAM) 및 전원/통신 하드웨어 설계** 소스 코드를 포함하고 있습니다.
+
+---
+
+## 🔌 하드웨어 회로도 (Circuit Diagram)
+
+전원 공급 안정화(5V/12V 분리) 및 MCU 간 통신(I2C, SoftwareSerial)을 포함한 하드웨어 결선도입니다.
+
+![Circuit Diagram](docs/circuit_diagram.png)
+
+* **I2C 통신:** Arduino Uno ↔ HuskyLens (데이터 및 전원 공급)
+* **SoftwareSerial 통신:** Arduino Uno ↔ ESP8266 (식료품 판별 패킷 송수신)
+* **전원 분배 (자체 제작 기판):** 
+  * 12V 2A 어댑터 ➔ LED Bar 조명 구동
+  * 5V 2A 어댑터 ➔ 만능기판 분배를 통해 4채널 ESP32-CAM 전력 공급 (MCU 포트 전류 한계 극복)
+* **AC 220V 제어:** 4채널 릴레이 모듈 ↔ 개조된 멀티탭 스위치 접점 연결
 
 ---
 
@@ -74,6 +99,9 @@ smart-refrigerator-embedded/
 ├── README.md
 ├── .gitignore
 │
+├── docs/                           # 문서화용 이미지
+│   └── circuit_diagram.jpg         # 전체 하드웨어 회로도
+│
 ├── esp32_cam/                      # [모듈 1] ESP32-CAM 4채널 실시간 영상 스트리밍
 │   └── CameraWebServer/
 │       ├── CameraWebServer.ino     # 카메라 서버 메인 펌웨어
@@ -123,7 +151,7 @@ smart-refrigerator-embedded/
 
 ### 2. 펌웨어 설정 (Wi-Fi 및 네트워크)
 
-* 보안을 위해 소스 코드 내 Wi-Fi 정보 및 브로커 주소는 환경에 맞게 입력 후 업로드해야 합니다.
+* 소스 코드 내 Wi-Fi 정보 및 브로커 주소를 환경에 맞게 입력 후 업로드합니다.
 ```cpp
 const char* ssid = "YOUR_WIFI_SSID";
 const char* password = "YOUR_WIFI_PASSWORD";
@@ -138,5 +166,4 @@ const char* mqtt_server = "YOUR_MQTT_BROKER_IP";
 * `huskylens/huskyi2c/huskyi2c.ino` ➔ **Arduino Uno**
 * `esp8266_gateway/gateway/gateway.ino` ➔ **LOLIN(WEMOS) D1 R1**
 * `esp32_cam/CameraWebServer/CameraWebServer.ino` ➔ **AI Thinker ESP32-CAM** (PSRAM 활성화)
-
 
